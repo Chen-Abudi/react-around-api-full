@@ -73,7 +73,7 @@ const likeCard = (req, res, next) => {
     { new: true }
   )
     .orFail(new NotFoundError(ERROR_MESSAGE.CARD_NOT_FOUND))
-    .then((likes) => res.send({ data: likes }))
+    .then((likes) => res.status(200).send({ data: likes }))
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new BadRequestError(ERROR_MESSAGE.INCORRECT_CARD_DATA));
