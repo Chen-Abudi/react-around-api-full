@@ -1,8 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
+const { errors } = require('celebrate');
+
 const bodyParser = require('body-parser');
 const router = require('./routes');
+
+const { requestLogger, errorLogger } = require('./middleware/logger');
 
 const { apiLimiter } = require('./utils/rateLimit');
 const { MONGO_SERVER } = require('./utils/constants');
@@ -25,7 +29,12 @@ app.use(apiLimiter);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(requestLogger);
+
 app.use(router);
+
+app.use(errorLogger);
+app.use(errors());
 
 app.listen(PORT, () => {
   console.log(`App listening at port ${PORT}`);

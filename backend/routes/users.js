@@ -10,12 +10,13 @@ const {
 const {
   validateUserProfile,
   validateUserAvatar,
+  validateObjectId,
 } = require('../middleware/validation');
 
 const usersRouter = express.Router();
 
 usersRouter.get('/', getUsers);
-usersRouter.get('/:_id', getUserById);
+usersRouter.get('/:_id', validateObjectId, getUserById);
 usersRouter.get('/me', getCurrentUser);
 // usersRouter.post('/', createUser);
 usersRouter.patch('/me', validateUserProfile, updateUser);

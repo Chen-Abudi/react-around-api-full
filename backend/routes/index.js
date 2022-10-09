@@ -10,8 +10,8 @@ const cardsRouter = require('./cards');
 const usersRouter = require('./users');
 const notFoundRouter = require('./notFoundRoute');
 
-app.post('/signup', validateUserBody, createUser);
-app.post('/signin', validateAuthentication, userLogin);
+router.post('/signup', validateUserBody, createUser);
+router.post('/signin', validateAuthentication, userLogin);
 
 router.use(auth);
 
