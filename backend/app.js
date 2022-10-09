@@ -5,6 +5,7 @@ const { errors } = require('celebrate');
 
 const bodyParser = require('body-parser');
 const router = require('./routes');
+const errorHandler = require('./middleware/errorHandler');
 
 const { requestLogger, errorLogger } = require('./middleware/logger');
 
@@ -35,6 +36,7 @@ app.use(router);
 
 app.use(errorLogger);
 app.use(errors());
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`App listening at port ${PORT}`);
