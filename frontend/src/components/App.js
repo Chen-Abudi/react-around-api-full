@@ -28,8 +28,10 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(true);
 
+  const [token, setToken] = useState(localStorage.getItem("jwt"));
+
   useEffect(() => {
-    const token = localStorage.getItem("jwt");
+    // const token = localStorage.getItem("jwt");
     if (token) {
       auth
         .checkToken(token)
@@ -101,6 +103,7 @@ function App() {
       .login(credentials)
       .then((res) => {
         login(res.data);
+        setToken(data.token);
         setIsLoading(false);
       })
       .catch((err) => {
