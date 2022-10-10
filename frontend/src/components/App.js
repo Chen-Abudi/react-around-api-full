@@ -14,6 +14,7 @@ import Login from "./Login";
 import Register from "./Register";
 
 import InfoToolTip from "./InfoToolTip";
+// import api from "../utils/api";
 
 function App() {
   const history = useHistory();
@@ -28,7 +29,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(true);
 
-  const [token, setToken] = useState(localStorage.getItem("jwt"));
+  // const [token, setToken] = useState(localStorage.getItem("jwt"));
 
   useEffect(() => {
     // const token = localStorage.getItem("jwt");
@@ -66,6 +67,7 @@ function App() {
 
   const handleLogout = () => {
     localStorage.removeItem("jwt");
+    api.updatedAuthUserToken(""); // Need to check if it's working this way !
     setLoggedIn(false);
   };
 
@@ -102,8 +104,9 @@ function App() {
     return auth
       .login(credentials)
       .then((res) => {
+        api.updatedAuthUserToken(res.token); // Need to check if it's working this way !
         login(res.data);
-        setToken(data.token);
+        // setToken(res.token);
         setIsLoading(false);
       })
       .catch((err) => {

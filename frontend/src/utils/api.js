@@ -14,6 +14,11 @@ class Api {
     }
   }
 
+  // When the user logs in or logs out, update the user token in the request header.
+  updatedAuthUserToken = (token) => {
+    this._headers = { ...this._headers, authorization: `Bearer ${token}` };
+  };
+
   getInitialcards() {
     return fetch(`${this._baseUrl}/cards`, {
       method: "GET",
