@@ -14,7 +14,7 @@ import Login from "./Login";
 import Register from "./Register";
 
 import InfoToolTip from "./InfoToolTip";
-// import api from "../utils/api";
+import api from "../utils/api";
 
 function App() {
   const history = useHistory();
