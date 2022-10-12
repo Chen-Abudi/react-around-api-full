@@ -10,6 +10,8 @@ const errorHandler = require('./middleware/errorHandler');
 
 const { requestLogger, errorLogger } = require('./middleware/logger');
 
+const { allowedCors, DEFAULT_ALLOWED_METHODS } = require('./utils/constants');
+
 const { apiLimiter } = require('./utils/rateLimit');
 const { MONGO_SERVER } = require('./utils/constants');
 
@@ -21,18 +23,22 @@ mongoose.connect(MONGO_SERVER);
 app.use(helmet());
 app.use(apiLimiter);
 
-// app.use((req, res, next) => {
-//   req.user = {
-//     _id: '631b12b86a9e3086d8cad6ff',
-//   };
-//   next();
-// });
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', allowedCors);
+  res.header(
+    'Access-Content-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  );
+  res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
+  next();
+});
+
 app.use(cors());
 app.options('*', cors());
-
 
 app.use(requestLogger);
 
