@@ -1,6 +1,6 @@
 class Auth {
-  constructor({ baseUrl, headers }) {
-    this.baseUrl = baseUrl;
+  constructor({ url, headers }) {
+    this.baseUrl = url;
     this.headers = headers;
   }
 
@@ -63,7 +63,7 @@ class Auth {
 }
 
 export const auth = new Auth({
-  baseUrl: "https://api.chen23-around-us.students.nomoredomainssbs.ru",
+  url: "https://api.chen23-around-us.students.nomoredomainssbs.ru",
   headers: {
     "Content-Type": "application/json",
   },

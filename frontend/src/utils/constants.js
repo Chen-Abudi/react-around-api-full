@@ -2,7 +2,7 @@
 export const baseUrl =
   "https://api.chen23-around-us.students.nomoredomainssbs.ru";
 export const headers = {
-  authorization: `Bearer ${localStorage.getItem("token")}`,
+  Authorization: `Bearer ${localStorage.getItem("token")}`,
   "Content-Type": "application/json",
 
   // export const baseUrl = "https://around.nomoreparties.co/v1/cohort-3-en";

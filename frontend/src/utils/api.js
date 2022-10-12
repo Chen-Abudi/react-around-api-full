@@ -2,8 +2,8 @@ import { baseUrl, headers } from "./constants";
 
 class Api {
   constructor({ baseUrl, headers }) {
-    this._baseUrl = baseUrl;
-    this._headers = headers;
+    this.baseUrl = baseUrl;
+    this.headers = headers;
   }
 
   _processResponse(res) {
@@ -16,27 +16,27 @@ class Api {
 
   // When the user logs in or logs out, update the user token in the request header.
   updatedAuthUserToken = (token) => {
-    this._headers = { ...this._headers, authorization: `Bearer ${token}` };
+    this.headers = { ...this.headers, Authorization: `Bearer ${token}` };
   };
 
   getInitialcards() {
-    return fetch(`${this._baseUrl}/cards`, {
+    return fetch(`${this.baseUrl}/cards`, {
       method: "GET",
-      headers: this._headers,
+      headers: this.headers,
     }).then(this._processResponse);
   }
 
   getUserInfo() {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return fetch(`${this.baseUrl}/users/me`, {
       method: "GET",
-      headers: this._headers,
+      headers: this.headers,
     }).then(this._processResponse);
   }
 
   setUserInfo({ name, about }) {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return fetch(`${this.baseUrl}/users/me`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: this.headers,
       body: JSON.stringify({
         name: name,
         about: about,
@@ -45,9 +45,9 @@ class Api {
   }
 
   setUserAvatar({ avatar }) {
-    return fetch(`${this._baseUrl}/users/me/avatar`, {
+    return fetch(`${this.baseUrl}/users/me/avatar`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: this.headers,
       body: JSON.stringify({
         avatar,
       }),
@@ -55,25 +55,25 @@ class Api {
   }
 
   addCard(data) {
-    return fetch(`${this._baseUrl}/cards`, {
+    return fetch(`${this.baseUrl}/cards`, {
       method: "POST",
-      headers: this._headers,
+      headers: this.headers,
       body: JSON.stringify(data),
     }).then(this._processResponse);
   }
 
   removeCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+    return fetch(`${this.baseUrl}/cards/${cardId}`, {
       method: "DELETE",
-      headers: this._headers,
+      headers: this.headers,
     }).then(this._processResponse);
   }
 
   cardLike(cardId, isLiked) {
     const method = isLiked ? "DELETE" : "PUT";
-    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+    return fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
       method: method,
-      headers: this._headers,
+      headers: this.headers,
     }).then(this._processResponse);
   }
 }
