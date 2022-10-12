@@ -63,7 +63,7 @@ class Auth {
 }
 
 export const auth = new Auth({
-  baseUrl: "https://register.nomoreparties.co",
+  baseUrl: "https://api.chen23-around-us.students.nomoredomainssbs.ru",
   headers: {
     "Content-Type": "application/json",
   },
