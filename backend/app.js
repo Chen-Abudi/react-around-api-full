@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
 
@@ -26,9 +27,12 @@ app.use(apiLimiter);
 //   };
 //   next();
 // });
-
+app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
+app.options('*', cors());
+
 
 app.use(requestLogger);
 
