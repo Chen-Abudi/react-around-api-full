@@ -25,8 +25,6 @@ function AroundUS() {
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
 
-  // const [token, _] = useState(localStorage.getItem("jwt"));
-
   useEffect(() => {
     Promise.all([api.getUserInfo(), api.getInitialcards()])
       .then(([user, cards]) => {

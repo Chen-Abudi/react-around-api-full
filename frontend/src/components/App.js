@@ -29,11 +29,10 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(true);
 
-  // const [token, setToken] = useState(localStorage.getItem("jwt"));
-
   useEffect(() => {
     const token = localStorage.getItem("jwt");
     if (token) {
+      const token = localStorage.getItem("jwt");
       auth
         .checkToken(token)
         .then((res) => {
@@ -69,6 +68,7 @@ function App() {
     localStorage.removeItem("jwt");
     api.updatedAuthUserToken(""); // Need to check if it's working this way !
     setLoggedIn(false);
+    history.push("/signin");
   };
 
   const login = (userData) => {
@@ -106,7 +106,6 @@ function App() {
       .then((res) => {
         api.updatedAuthUserToken(res.token); // Need to check if it's working this way !
         login(res.data);
-        // setToken(res.token);
         setIsLoading(false);
       })
       .catch((err) => {
