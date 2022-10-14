@@ -55,7 +55,7 @@ const validateUserBody = celebrate({
 });
 
 const validateUserProfile = celebrate({
-  body: Joi.string().keys({
+  body: Joi.object().keys({
     name: Joi.string().min(2).max(30).messages({
       'string.min': 'Please lengthen this text to 2 characters or more',
       'string.max': 'Please lengthen this text to 30 characters or less',
@@ -68,7 +68,7 @@ const validateUserProfile = celebrate({
 });
 
 const validateUserAvatar = celebrate({
-  body: Joi.string().keys({
+  body: Joi.object().keys({
     avatar: Joi.string()
       .custom(validateURL)
       .message('Please enter a valid URL for the avatar'),
@@ -77,17 +77,19 @@ const validateUserAvatar = celebrate({
 
 const validateObjectId = celebrate({
   params: Joi.object().keys({
-    cardId: Joi.string().required.custom((value, helpers) => {
-      if (ObjectId.isValid(value)) {
-        return value;
-      }
-      return helpers.message('Sorry, it is invalid id');
-    }),
+    _id: Joi.string()
+      .required()
+      .custom((value, helpers) => {
+        if (ObjectId.isValid(value)) {
+          return value;
+        }
+        return helpers.message('Sorry, it is invalid id');
+      }),
   }),
 });
 
 const validateCardBody = celebrate({
-  body: Joi.string().keys({
+  body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30).messages({
       'string.empty': 'A name is required',
       'string.min': 'Please lengthen this text to 2 characters or more',
