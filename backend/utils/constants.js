@@ -18,9 +18,9 @@ const ERROR_MESSAGE = {
   NOT_FOUND: 'Sorry, the requested resource was not found',
   INTERNAL_SERVER_ERROR: 'Internal server error has occurred',
   CONFLICT: 'A user with this data already registered',
-  BAD_REQUEST: 'The request cannot be fulfilled due to bad syntax',
+  BAD_REQUEST: 'This request cannot be fulfilled due to bad syntax',
   UNAUTHORIZED: 'Authorization required',
-  FORBIDDEN: 'Sorry, you cannot remove others card',
+  FORBIDDEN: 'Sorry, you are not authorized to remove others card',
 };
 
 module.exports = {
