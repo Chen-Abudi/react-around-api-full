@@ -1,6 +1,6 @@
 class Auth {
-  constructor({ url, headers }) {
-    this.baseUrl = url;
+  constructor({ baseUrl, headers }) {
+    this.baseUrl = baseUrl;
     this.headers = headers;
   }
 
@@ -62,8 +62,13 @@ class Auth {
   }
 }
 
+const BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://api.chen23-around-us.students.nomoredomainssbs.ru"
+    : "http://localhost:3000";
+
 export const auth = new Auth({
-  url: "https://api.chen23-around-us.students.nomoredomainssbs.ru",
+  baseUrl: BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },

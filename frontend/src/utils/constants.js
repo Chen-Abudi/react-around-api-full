@@ -1,6 +1,10 @@
-// Connecting to Practicum's Api
-export const baseUrl =
-  "https://api.chen23-around-us.students.nomoredomainssbs.ru";
+// Connecting to Api
+const BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://api.chen23-around-us.students.nomoredomainssbs.ru"
+    : "http://localhost:3000";
+
+export const baseUrl = BASE_URL;
 export const headers = {
   Authorization: `Bearer ${localStorage.getItem("token")}`,
   "Content-Type": "application/json",
