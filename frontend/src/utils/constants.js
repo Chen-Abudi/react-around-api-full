@@ -6,7 +6,7 @@ const BASE_URL =
 
 export const baseUrl = BASE_URL;
 export const headers = {
-  Authorization: `Bearer ${localStorage.getItem("token")}`,
+  authorization: `Bearer ${localStorage.getItem("token")}`,
   "Content-Type": "application/json",
 };
 // ────────────────────────────────────────────────────────────────────────────
