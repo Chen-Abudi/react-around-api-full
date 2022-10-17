@@ -74,7 +74,7 @@ function AroundUS() {
 
   function handleCardLike(card) {
     // Check one more time if this card was already liked
-    const isLiked = card.likes.some((user) => user === currentUser._id);
+    const isLiked = card.likes.some((id) => id === currentUser._id);
     // Send a request to the API and getting the updated card data
     api
       .cardLike(card._id, isLiked)

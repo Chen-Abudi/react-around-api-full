@@ -69,9 +69,9 @@ class Api {
     }).then(this._processResponse);
   }
 
-  cardLike(cardId, isLiked) {
+  cardLike(id, isLiked) {
     const method = isLiked ? "DELETE" : "PUT";
-    return fetch(`${this.baseUrl}/cards/${cardId}likes`, {
+    return fetch(`${this.baseUrl}/cards/${id}likes`, {
       method: method,
       headers: this.headers,
     }).then(this._processResponse);
