@@ -76,23 +76,13 @@ function AroundUS() {
     // Check one more time if this card was already liked
     const isLiked = card.likes.some((id) => id === currentUser._id);
     // Send a request to the API and getting the updated card data
-    // api
-    //   .cardLike(card._id, isLiked)
-    //   .then((newCard) => {
-    //     const newCards = cards.map((currentCard) =>
-    //       currentCard._id === card._id ? newCard : currentCard
-    //     );
-    //     setCards(newCards.data);
-    //   })
-    //   .catch((err) => console.log(err));
     api
       .cardLike(card._id, isLiked)
       .then((newCard) => {
-        setCards((cards) =>
-          cards.map((currentCard) => {
-            return currentCard._id === card._id ? newCard : currentCard;
-          })
+        const newCards = cards.map((currentCard) =>
+          currentCard._id === card._id ? newCard : currentCard
         );
+        setCards(newCards.data);
       })
       .catch((err) => console.log(err));
   }
