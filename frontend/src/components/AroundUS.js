@@ -80,7 +80,7 @@ function AroundUS() {
       .cardLike(card._id, isLiked)
       .then((newCard) => {
         const newCards = cards.map((currentCard) =>
-          currentCard._id === card._id ? newCard.data : currentCard
+          currentCard._id === card._id ? newCard : currentCard
         );
         setCards(newCards.data);
       })
