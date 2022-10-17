@@ -83,7 +83,7 @@ function App() {
       .register(credentials)
       .then((res) => {
         setIsInfoToolTipAction("successful");
-
+        api.updatedAuthUserToken(localStorage.getItem("jwt"));
         login(res.data);
       })
       .catch((err) => {
@@ -104,7 +104,7 @@ function App() {
     return auth
       .login(credentials)
       .then((res) => {
-        api.updatedAuthUserToken(res.token); // Need to check if it's working this way !
+        api.updatedAuthUserToken(localStorage.getItem("jwt")); // Need to check if it's working this way !
         login(res.data);
         setIsLoading(false);
       })
