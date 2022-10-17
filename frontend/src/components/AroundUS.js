@@ -28,8 +28,8 @@ function AroundUS() {
   useEffect(() => {
     Promise.all([api.getUserInfo(), api.getInitialcards()])
       .then(([user, cards]) => {
-        setCurrentUser(user);
-        setCards(cards);
+        setCurrentUser(user.data);
+        setCards(cards.data);
       })
       .catch((err) => console.log(err));
   }, []);
