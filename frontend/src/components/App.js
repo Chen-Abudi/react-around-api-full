@@ -21,13 +21,7 @@ function App() {
 
   const [loggedIn, setLoggedIn] = useState(false);
 
-  const [accountData, setAccountData] = useState({
-    _id: "",
-    email: "",
-    name: "",
-    about: "",
-    avatar: "",
-  });
+  const [accountData, setAccountData] = useState({ _id: "", email: "" });
 
   const [isInfoToolTipOpen, setIsInfoToolTipOpen] = useState(false);
   const [isInfoToolTipAction, setIsInfoToolTipAction] = useState("");
@@ -44,7 +38,7 @@ function App() {
         .then((res) => {
           if (res) {
             setLoggedIn(true);
-            setAccountData(res); // changed to res from res.data
+            setAccountData(res.data);
             history.push("/");
           }
         })
