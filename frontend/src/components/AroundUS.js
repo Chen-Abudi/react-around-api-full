@@ -80,9 +80,9 @@ function AroundUS() {
       .cardLike(card._id, isLiked)
       .then((newCard) => {
         const newCards = cards.map((currentCard) =>
-          currentCard._id === card._id ? newCard : currentCard
+          currentCard._id === card._id ? newCard.data : currentCard
         );
-        setCards(newCards);
+        setCards(newCards.data);
       })
       .catch((err) => console.log(err));
   }
@@ -95,7 +95,7 @@ function AroundUS() {
         const newCards = cards.filter(
           (currentCard) => currentCard._id !== card._id
         );
-        setCards(newCards);
+        setCards(newCards.data);
         closeAllPopups();
       })
       .catch((err) => console.log(err))
@@ -107,7 +107,7 @@ function AroundUS() {
     api
       .setUserInfo(userData)
       .then((userInfo) => {
-        setCurrentUser(userInfo);
+        setCurrentUser(userInfo.data);
         closeAllPopups();
       })
       .catch((err) => console.log(err))
@@ -119,7 +119,7 @@ function AroundUS() {
     api
       .addCard(cardData)
       .then((newCard) => {
-        setCards([newCard, ...cards]);
+        setCards([newCard.data, ...cards]);
         closeAllPopups();
       })
       .catch((err) => console.log(err))
@@ -131,7 +131,7 @@ function AroundUS() {
     api
       .setUserAvatar(avatarData)
       .then((newAvatar) => {
-        setCurrentUser(newAvatar);
+        setCurrentUser(newAvatar.data);
         closeAllPopups();
       })
       .catch((err) => console.log(err))
