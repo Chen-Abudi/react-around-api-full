@@ -28,6 +28,7 @@ class Auth {
           .then(this.processResponse)
           .then((res) => {
             localStorage.setItem("jwt", res.token);
+
             return data;
             // There is no need to run checkToken because data has already returned from registration
           });
@@ -46,7 +47,7 @@ class Auth {
       .then(this.processResponse)
       .then((data) => {
         localStorage.setItem("jwt", data.token);
-        return this.checkToken(data.token);
+        return { ...this.checkToken(data.token), token: data.token };
       });
   }
 
