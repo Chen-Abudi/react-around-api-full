@@ -76,15 +76,6 @@ function AroundUS() {
     // Check one more time if this card was already liked
     const isLiked = card.likes.some((cardId) => cardId === currentUser._id);
     // Send a request to the API and getting the updated card data
-    // api
-    //   .cardLike(card._id, isLiked)
-    //   .then((newCard) => {
-    //     const newCards = cards.map((currentCard) =>
-    //       currentCard._id === card._id ? newCard : currentCard
-    //     );
-    //     setCards(newCards.data);
-    //   })
-    //   .catch((err) => console.log(err));
     api
       .cardLike(card._id, isLiked)
       .then((newCard) =>
@@ -96,21 +87,6 @@ function AroundUS() {
       )
       .catch((err) => console.log(err));
   }
-
-  // function handleCardDelete(card) {
-  //   setIsLoading(true);
-  //   api
-  //     .removeCard(card._id)
-  //     .then(() => {
-  //       const newCards = cards.filter(
-  //         (currentCard) => currentCard._id !== card._id
-  //       );
-  //       setCards(newCards.data);
-  //       closeAllPopups();
-  //     })
-  //     .catch((err) => console.log(err))
-  //     .finally(() => setIsLoading(false));
-  // }
 
   function handleCardDelete(card) {
     setIsLoading(true);
