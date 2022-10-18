@@ -29,10 +29,26 @@ const createCard = (req, res, next) => {
 };
 
 // DELETE
-const deleteCard = (req, res, next) => {
-  const { _id } = req.params;
+// const deleteCard = (req, res, next) => {
+//   const { _id } = req.params;
 
-  Card.findById(_id)
+//   Card.findById(_id)
+//     .orFail(new NotFoundError(ERROR_MESSAGE.CARD_NOT_FOUND))
+//     .then((card) => {
+//       if (!card.owner.equals(req.user)) {
+//         next(new ForbiddenError(ERROR_MESSAGE.FORBIDDEN));
+//       } else {
+//         Card.findByIdAndRemove(_id).then((removedCard) =>
+//           res.status(200).send(removedCard)
+//         );
+//       }
+//     })
+//     .catch(next);
+
+const deleteCard = (req, res, next) => {
+  const { id } = req.params;
+
+  Card.findById(id)
     .orFail(new NotFoundError(ERROR_MESSAGE.CARD_NOT_FOUND))
     .then((card) => {
       if (!card.owner.equals(req.user)) {
@@ -44,6 +60,7 @@ const deleteCard = (req, res, next) => {
       }
     })
     .catch(next);
+
   // .then((card) => res.send({ data: card }))
   // .catch((err) => {
   //   if (err.name === 'CastError') {
