@@ -11,10 +11,14 @@ function Card({ card, likesCounter, onCardClick, onCardDelete, onCardLike }) {
   // Check if the card was liked by the current user
   // const isLiked = card.likes.some((user) => user._id === currentUser._id);
 
-  const isLiked = card.likes.some((user) => user.id === currentUser._id);
+  const isLiked = card.likes.some((user) => user === currentUser._id);
 
   const postcardLikeButtonClassName = `postcard__like-button ${
     isLiked && "postcard__like-button_active"
+  }`;
+
+  const postcardRemoveButtonClassName = `postcard__remove-button ${
+    isOwn ? "postcard__remove-button_visible" : "postcard__remove-button"
   }`;
 
   function handleClick() {
@@ -31,14 +35,20 @@ function Card({ card, likesCounter, onCardClick, onCardDelete, onCardLike }) {
 
   return (
     <li className="postcard" key={card._id}>
-      {isOwn && (
+      <button
+        className={postcardRemoveButtonClassName}
+        aria-label="remove postcard"
+        type="button"
+        onClick={handleCardDeleteClick}
+      />
+      {/* {isOwn && (
         <button
           className="postcard__remove-button"
           aria-label="remove postcard"
           type="button"
           onClick={handleCardDeleteClick}
         />
-      )}
+      )} */}
       {/* <button
         className={`postcard__remove-button ${
           isOwn && "postcard__remove-button_visible"
