@@ -17,11 +17,9 @@ function Card({ card, likesCounter, onCardClick, onCardDelete, onCardLike }) {
     isLiked && "postcard__like-button_active"
   }`;
 
-  // const postcardRemoveButtonClassName = `postcard__remove-button ${
-  //   isOwn ? "postcard__remove-button_visible" : "postcard__remove-button"
-  // }`;
-
-  const displayRemoveButton = isOwn ? true : `postcard__remove-button`;
+  const postcardRemoveButtonClassName = `postcard__remove-button ${
+    isOwn ? "postcard__remove-button_visible" : "postcard__remove-button"
+  }`;
 
   function handleClick() {
     onCardClick(card);
@@ -38,7 +36,7 @@ function Card({ card, likesCounter, onCardClick, onCardDelete, onCardLike }) {
   return (
     <li className="postcard" key={card._id}>
       <button
-        className={displayRemoveButton}
+        className={postcardRemoveButtonClassName}
         aria-label="remove postcard"
         type="button"
         onClick={handleCardDeleteClick}
