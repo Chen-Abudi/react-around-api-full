@@ -119,7 +119,7 @@ function AroundUS() {
     api
       .addCard(cardData)
       .then((newCard) => {
-        setCards([newCard.data, ...cards]);
+        setCards([newCard, ...cards]);
         closeAllPopups();
       })
       .catch((err) => console.log(err))
