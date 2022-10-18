@@ -15,7 +15,7 @@ const getCards = (req, res, next) => {
 // POST
 const createCard = (req, res, next) => {
   const { name, link } = req.body;
-  const owner = req.user._id;
+  const owner = req.user;
 
   Card.create({ name, link, owner })
     .then((card) => res.status(201).send({ data: card }))
@@ -29,22 +29,6 @@ const createCard = (req, res, next) => {
 };
 
 // DELETE
-// const deleteCard = (req, res, next) => {
-//   const { _id } = req.params;
-
-//   Card.findById(_id)
-//     .orFail(new NotFoundError(ERROR_MESSAGE.CARD_NOT_FOUND))
-//     .then((card) => {
-//       if (!card.owner.equals(req.user)) {
-//         next(new ForbiddenError(ERROR_MESSAGE.FORBIDDEN));
-//       } else {
-//         Card.findByIdAndRemove(_id).then((removedCard) =>
-//           res.status(200).send(removedCard)
-//         );
-//       }
-//     })
-//     .catch(next);
-
 const deleteCard = (req, res, next) => {
   const cardId = req.params._id;
   const userId = req.user._id;
@@ -59,23 +43,6 @@ const deleteCard = (req, res, next) => {
       return Card.findByIdAndRemove(cardId).then(() => res.send(card));
     })
     .catch(next);
-
-  // .then((card) => res.send({ data: card }))
-  // .catch((err) => {
-  //   if (err.name === 'CastError') {
-  //     res
-  //       .status(ERROR_CODE.INCORRECT_DATA)
-  //       .send(ERROR_MESSAGE.INCORRECT_CARD_DATA);
-  //   }
-  //   if (err.name === 'DocumentNotFoundError') {
-  //     res.status(ERROR_CODE.NOT_FOUND).send(ERROR_MESSAGE.CARD_NOT_FOUND);
-  //   } else {
-  //     res
-  //       .status(ERROR_CODE.INTERNAL_SERVER_ERROR)
-  //       .send(ERROR_MESSAGE.INTERNAL_SERVER_ERROR);
-  //   }
-  // })
-  // .catch(next);
 };
 
 // PUT
