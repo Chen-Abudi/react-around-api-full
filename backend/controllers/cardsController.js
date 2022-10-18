@@ -46,18 +46,19 @@ const createCard = (req, res, next) => {
 //     .catch(next);
 
 const deleteCard = (req, res, next) => {
-  const { id } = req.params;
+  const cardId = req.params._id;
+  const userId = req.user._id;
 
-  Card.findById(id)
+  Card.findById(cardId)
     .orFail(new NotFoundError(ERROR_MESSAGE.CARD_NOT_FOUND))
     .then((card) => {
-      if (!card.owner.equals(req.user)) {
-        next(new ForbiddenError(ERROR_MESSAGE.FORBIDDEN));
-      } else {
-        Card.findByIdAndRemove(removedCard).then(() =>
-          res.status(200).send(removedCard)
-        );
+      const { owner } = card;
+      if (owner != userId) {
+        return next(new ForbiddenError(ERROR_MESSAGE.FORBIDDEN));
       }
+      return Card.findByIdAndRemove(cardId).then(() =>
+        res.send({ data: card })
+      );
     })
     .catch(next);
 
