@@ -97,15 +97,29 @@ function AroundUS() {
       .catch((err) => console.log(err));
   }
 
+  // function handleCardDelete(card) {
+  //   setIsLoading(true);
+  //   api
+  //     .removeCard(card._id)
+  //     .then(() => {
+  //       const newCards = cards.filter(
+  //         (currentCard) => currentCard._id !== card._id
+  //       );
+  //       setCards(newCards.data);
+  //       closeAllPopups();
+  //     })
+  //     .catch((err) => console.log(err))
+  //     .finally(() => setIsLoading(false));
+  // }
+
   function handleCardDelete(card) {
     setIsLoading(true);
     api
       .removeCard(card._id)
       .then(() => {
-        const newCards = cards.filter(
-          (currentCard) => currentCard._id !== card._id
+        setCards((cards) =>
+          cards.filter((cardToRemove) => cardToRemove.data._id !== card._id)
         );
-        setCards(newCards.data);
         closeAllPopups();
       })
       .catch((err) => console.log(err))
