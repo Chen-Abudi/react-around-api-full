@@ -56,9 +56,7 @@ const deleteCard = (req, res, next) => {
       if (owner != userId) {
         return next(new ForbiddenError(ERROR_MESSAGE.FORBIDDEN));
       }
-      return Card.findByIdAndRemove(cardId).then(() =>
-        res.send({ data: card })
-      );
+      return Card.findByIdAndRemove(cardId).then(() => res.send(card));
     })
     .catch(next);
 
