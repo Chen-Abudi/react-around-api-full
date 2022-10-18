@@ -118,7 +118,7 @@ function AroundUS() {
       .removeCard(card._id)
       .then(() => {
         setCards((cards) =>
-          cards.filter((cardToRemove) => cardToRemove.data._id !== card._id)
+          cards.filter((cardToRemove) => cardToRemove._id !== card._id)
         );
         closeAllPopups();
       })
