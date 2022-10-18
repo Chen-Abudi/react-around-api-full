@@ -11,10 +11,10 @@ function Card({ card, likesCounter, onCardClick, onCardDelete, onCardLike }) {
   // Check if the card was liked by the current user
   // const isLiked = card.likes.some((user) => user._id === currentUser._id);
 
-  const isLiked = card.likes.some((id) => id === currentUser._id);
+  const isLiked = card.likes.some((user) => user === currentUser._id);
 
   const postcardLikeButtonClassName = `postcard__like-button ${
-    isLiked && "postcard__like-button_active"
+    isLiked ? "postcard__like-button_active" : "postcard__like-button"
   }`;
 
   function handleClick() {

@@ -70,7 +70,7 @@ class Api {
   }
 
   cardLike(id, isLiked) {
-    const method = isLiked ? "DELETE" : "PUT";
+    const method = isLiked ? "PUT" : "DELETE";
     return fetch(`${this.baseUrl}/cards/${id}likes`, {
       method: method,
       headers: this.headers,
