@@ -54,7 +54,7 @@ const deleteCard = (req, res, next) => {
       if (!card.owner.equals(req.user)) {
         next(new ForbiddenError(ERROR_MESSAGE.FORBIDDEN));
       } else {
-        Card.findByIdAndRemove(id).then((removedCard) =>
+        Card.findByIdAndRemove(removedCard).then(() =>
           res.status(200).send(removedCard)
         );
       }
