@@ -110,11 +110,35 @@ const updateUser = (req, res, next) => {
 };
 
 // PATCH
+// const updateUserAvatar = (req, res, next) => {
+//   const { avatar } = req.body;
+
+//   User.findByIdAndUpdate(
+//     req.user._id,
+//     { avatar },
+//     {
+//       new: true,
+//       runValidators: true,
+//       upsert: false,
+//     }
+//   )
+//     .orFail(new NotFoundError(ERROR_MESSAGE.USER_NOT_FOUND))
+//     .then((user) => res.send({ data: user }))
+//     .catch((err) => {
+//       if (err.name === 'CastError' || 'ValidationError') {
+//         next(new BadRequestError(ERROR_MESSAGE.INCORRECT_USER_DATA));
+//       } else {
+//         next(err);
+//       }
+//     });
+// };
+
 const updateUserAvatar = (req, res, next) => {
+  const currentUser = req.user._id;
   const { avatar } = req.body;
 
   User.findByIdAndUpdate(
-    req.user._id,
+    { _id: currentUser },
     { avatar },
     {
       new: true,
@@ -123,7 +147,7 @@ const updateUserAvatar = (req, res, next) => {
     }
   )
     .orFail(new NotFoundError(ERROR_MESSAGE.USER_NOT_FOUND))
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'CastError' || 'ValidationError') {
         next(new BadRequestError(ERROR_MESSAGE.INCORRECT_USER_DATA));
