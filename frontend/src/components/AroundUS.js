@@ -133,7 +133,7 @@ function AroundUS() {
       .then((newCard) => {
         const newCardArr = [...cards];
         newCardArr.push(newCard.data);
-        setCards(newCardArr.data);
+        setCards(newCardArr);
         closeAllPopups();
       })
       .catch((err) => console.log(err))
