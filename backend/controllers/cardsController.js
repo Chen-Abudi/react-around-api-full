@@ -20,7 +20,6 @@ const createCard = (req, res, next) => {
   Card.create({ name, link, owner })
     .then((card) => res.status(201).send({ data: card }))
     .catch((err) => {
-      console.log(err);
       if (err.name === 'ValidationError') {
         next(new BadRequestError(ERROR_MESSAGE.INCORRECT_CARD_DATA));
       } else {
