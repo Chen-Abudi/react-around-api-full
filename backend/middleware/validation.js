@@ -3,7 +3,7 @@ const validator = require('validator');
 const { ObjectId } = require('mongoose').Types;
 
 const validateURL = (value, helpers) => {
-  if (validator.isURL(value)) {
+  if (validator.isURL(value, { protocols: ['http', 'https'] })) {
     return value;
   }
   return helpers.error('string.uri');
