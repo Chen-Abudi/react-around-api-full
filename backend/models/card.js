@@ -11,10 +11,6 @@ const cardSchema = new mongoose.Schema({
   link: {
     type: String,
     required: [true, 'Please enter a URL'],
-    validate: {
-      validator: (v) => validatorURL(v),
-      message: 'Please enter a valid URL for picture',
-    },
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
