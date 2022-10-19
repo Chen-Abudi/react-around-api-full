@@ -140,24 +140,12 @@ function AroundUS() {
       .finally(() => setIsLoading(false));
   }
 
-  // function handleUpdateAvatar(avatarData) {
-  //   setIsLoading(true);
-  //   api
-  //     .setUserAvatar(avatarData)
-  //     .then((newAvatar) => {
-  //       setCurrentUser(newAvatar);
-  //       closeAllPopups();
-  //     })
-  //     .catch((err) => console.log(err))
-  //     .finally(() => setIsLoading(false));
-  // }
-
-  function handleUpdateAvatar(newAvatar) {
+  function handleUpdateAvatar(avatarData) {
     setIsLoading(true);
     api
-      .setUserAvatar(newAvatar)
-      .then((updateUserAvatar) => {
-        setCurrentUser(updateUserAvatar);
+      .setUserAvatar(avatarData)
+      .then((newAvatar) => {
+        setCurrentUser(newAvatar);
         closeAllPopups();
       })
       .catch((err) => console.log(err))
