@@ -16,17 +16,10 @@ function InfoToolTip({ isOpen, onClose, action }) {
   });
 
   return (
-    <PopupWithForm
-      isOpen={isOpen}
-      onClose={onClose}
-      // className="tooltip"
-      name="tooltip"
-      // title=""
-    >
+    <PopupWithForm isOpen={isOpen} onClose={onClose} name="tooltip">
       <img
         className="tooltip__icon"
         src={success ? successfulIcon : failIcon}
-        // alt="Tooltip Icon"
         alt={`${success ? "successful" : "unsuccessful"} attempt`}
       />
       <p className="tooltip__message">

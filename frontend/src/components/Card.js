@@ -4,13 +4,9 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 function Card({ card, likesCounter, onCardClick, onCardDelete, onCardLike }) {
   const currentUser = useContext(CurrentUserContext);
   // Checking if the current user is the owner of the current card
-  // const isOwn = card.owner._id === currentUser._id;
-
   const isOwn = card.owner === currentUser._id;
 
   // Check if the card was liked by the current user
-  // const isLiked = card.likes.some((user) => user._id === currentUser._id);
-
   const isLiked = card.likes.some((cardId) => cardId === currentUser._id);
 
   const postcardLikeButtonClassName = `postcard__like-button ${
@@ -41,22 +37,6 @@ function Card({ card, likesCounter, onCardClick, onCardDelete, onCardLike }) {
         type="button"
         onClick={handleCardDeleteClick}
       />
-      {/* {isOwn && (
-        <button
-          className="postcard__remove-button"
-          aria-label="remove postcard"
-          type="button"
-          onClick={handleCardDeleteClick}
-        />
-      )} */}
-      {/* <button
-        className={`postcard__remove-button ${
-          isOwn && "postcard__remove-button_visible"
-        }`}
-        aria-label="remove postcard"
-        type="button"
-        onClick={handleCardDeleteClick}
-      /> */}
       <img
         className="postcard__image"
         src={card.link}

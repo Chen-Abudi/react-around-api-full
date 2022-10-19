@@ -114,18 +114,6 @@ function AroundUS() {
       .finally(() => setIsLoading(false));
   }
 
-  // function handleAddPlaceSubmit(cardData) {
-  //   setIsLoading(true);
-  //   api
-  //     .addCard(cardData)
-  //     .then((newCard) => {
-  //       setCards([newCard, ...cards]);
-  //       closeAllPopups();
-  //     })
-  //     .catch((err) => console.log(err))
-  //     .finally(() => setIsLoading(false));
-  // }
-
   function handleAddPlaceSubmit(cardData) {
     setIsLoading(true);
     api

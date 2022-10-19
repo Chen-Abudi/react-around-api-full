@@ -66,7 +66,7 @@ function App() {
 
   const handleLogout = () => {
     localStorage.removeItem("jwt");
-    api.updatedAuthUserToken(""); // Need to check if it's working this way !
+    api.updatedAuthUserToken("");
     setLoggedIn(false);
     history.push("/signin");
   };
@@ -104,7 +104,7 @@ function App() {
     return auth
       .login(credentials)
       .then((res) => {
-        api.updatedAuthUserToken(localStorage.getItem("jwt")); // Need to check if it's working this way !
+        api.updatedAuthUserToken(localStorage.getItem("jwt"));
         login(res.data);
         setIsLoading(false);
       })
