@@ -9,6 +9,8 @@
     "function-paren-newline": "off",
     "object-curly-newline": "off",
     "newline-per-chained-call": "off",
+    "eqeqeq": "off",
+    "func-names": "off",
     "no-unused-vars": ["error", { "argsIgnorePattern": "next" }]
   }
 }
