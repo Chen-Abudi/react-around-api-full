@@ -103,8 +103,8 @@ This is a Full-stack interactive app with responsive design which enables travel
 
     - Seeing others cards.
 
-      - Capability to like or dislike own and others cards as well.
-        ![](./frontend/src/images/like-dislike.jpg)
+    - Capability to like or dislike own and others cards.
+      ![](./frontend/src/images/like-dislike.jpg)
 
     - The users can remove their only their own and not others cards.
       ![](./frontend/src/images/remove.jpg)
