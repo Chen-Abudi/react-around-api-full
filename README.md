@@ -107,8 +107,8 @@ This is a Full-stack interactive app with responsive design which enables travel
 
       ![](./frontend/src/images/like-dislike.jpg)
 
-    - The users can remove their only their own and not others cards.
+    - The users can remove only their own cards and not others.
       ![](./frontend/src/images/remove.jpg)
 
-    - Click on card for opening popup with the image in bigger.
+    - Click on card for opening popup with the image in bigger size.
       ![](./frontend//src//images/zoom-in.png)
