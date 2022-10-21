@@ -62,17 +62,41 @@ const getCurrentUser = (req, res, next) => {
 };
 
 // POST
+// const createUser = (req, res, next) => {
+//   const { name, about, avatar, email, password } = req.body;
+
+//   User.findOne({ email })
+//     .then((user) => {
+//       if (user) {
+//         throw new ConflictError(ERROR_MESSAGE.CONFLICT);
+//       } else {
+//         return bcrypt.hash(password, 10);
+//       }
+//     })
+//     .then((hash) =>
+//       User.create({
+//         name,
+//         about,
+//         avatar,
+//         email,
+//         password: hash,
+//       })
+//     )
+//     .then((user) => res.status(201).send({ data: user }))
+//     .catch((err) => {
+//       if (err.name === 'ValidationError') {
+//         next(new BadRequestError('Invalid email or password'));
+//       } else {
+//         next(err);
+//       }
+//     });
+// };
+
 const createUser = (req, res, next) => {
   const { name, about, avatar, email, password } = req.body;
 
-  User.findOne({ email })
-    .then((user) => {
-      if (user) {
-        throw new ConflictError(ERROR_MESSAGE.CONFLICT);
-      } else {
-        return bcrypt.hash(password, 10);
-      }
-    })
+  bcrypt
+    .hash(password, 10)
     .then((hash) =>
       User.create({
         name,
@@ -87,9 +111,10 @@ const createUser = (req, res, next) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Invalid email or password'));
       } else {
-        next(err);
+        throw new ConflictError(ERROR_MESSAGE.CONFLICT);
       }
-    });
+    })
+    .catch(next);
 };
 
 // PATCH
