@@ -70,7 +70,7 @@ This is a Full-stack interactive app with responsive design which enables travel
 
 ## Possible Improvements
 
-- [ ] Create a Forgot Password option in case the users forgets theirs.
+- [ ] Create a Forgot Password option in case the users forget theirs.
 - [ ] Resets Password
 
 # Live Project
