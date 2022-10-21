@@ -58,45 +58,17 @@ const getCurrentUser = (req, res, next) => {
 };
 
 // POST
-const createUser = (req, res, next) => {
-  const { name, about, avatar, email, password } = req.body;
-
-  User.findOne({ email })
-    .select('+password')
-    .then((user) => {
-      if (user) {
-        throw new ConflictError(ERROR_MESSAGE.CONFLICT);
-      } else {
-        return bcrypt.hash(password, 10);
-      }
-    })
-    .then((hash) =>
-      User.create({
-        name,
-        about,
-        avatar,
-        email,
-        password: hash,
-      })
-    )
-    .then((user) => res.status(201).send({ data: user }))
-    .catch((err) => {
-      if (err.name === 'ValidationError') {
-        next(new BadRequestError('Invalid email or password'));
-      } else {
-        next(err);
-      }
-    });
-};
-
 // const createUser = (req, res, next) => {
 //   const { name, about, avatar, email, password } = req.body;
 
-//   if (!req.body.password)
-//     throw new BadRequestError('Invalid email or password');
-
-//   bcrypt
-//     .hash(password, 10)
+//   User.findOne({ email })
+//     .then((user) => {
+//       if (user) {
+//         throw new ConflictError(ERROR_MESSAGE.CONFLICT);
+//       } else {
+//         return bcrypt.hash(password, 10);
+//       }
+//     })
 //     .then((hash) =>
 //       User.create({
 //         name,
@@ -106,17 +78,44 @@ const createUser = (req, res, next) => {
 //         password: hash,
 //       })
 //     )
-//     .then((user) =>
-//       res.status(201).send({ data: { email: user.email, _id: user._id } })
-//     )
+//     .then((user) => res.status(201).send({ data: user }))
 //     .catch((err) => {
-//       if (err.name === 'ConflictError') {
-//         next(new ConflictError(ERROR_MESSAGE.CONFLICT));
+//       if (err.name === 'ValidationError') {
+//         next(new BadRequestError('Invalid email or password'));
 //       } else {
 //         next(err);
 //       }
 //     });
 // };
+
+const createUser = (req, res, next) => {
+  const { name, about, avatar, email, password } = req.body;
+
+  if (!req.body.password)
+    throw new BadRequestError('Invalid email or password');
+
+  bcrypt
+    .hash(password, 10)
+    .then((hash) =>
+      User.create({
+        name,
+        about,
+        avatar,
+        email,
+        password: hash,
+      })
+    )
+    .then((user) =>
+      res.status(201).send({ data: { email: user.email, _id: user._id } })
+    )
+    .catch((err) => {
+      if (err.name === 'ConflictError') {
+        next(new ConflictError(ERROR_MESSAGE.CONFLICT));
+      } else {
+        next(err);
+      }
+    });
+};
 
 // PATCH
 const updateUser = (req, res, next) => {
