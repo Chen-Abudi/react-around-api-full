@@ -37,7 +37,7 @@ const userLogin = (req, res, next) => {
         expiresIn: '7d',
       });
       const { password, ...user } = data._doc;
-      res.send({ data: user.toJSON(), token });
+      res.send({ data: user, token });
     })
     .catch(() => {
       next(new UnauthorizeError('Incorrect email or password'));
