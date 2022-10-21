@@ -12,35 +12,19 @@ const BadRequestError = require('../errors/BadRequestError');
 
 const { ERROR_MESSAGE } = require('../utils/constants');
 
-// const userLogin = (req, res, next) => {
-//   const { email, password } = req.body;
-
-//   User.findUserByCredentials(email, password)
-//     .then((user) => {
-//       const token = jwt.sign({ _id: user._id }, JWT_SECRET, {
-//         expiresIn: '7d',
-//       });
-//       res.send({ data: user.toJSON(), token });
-//     })
-//     .catch(() => {
-//       next(new UnauthorizeError('Incorrect email or password'));
-//     });
-// };
-
 const userLogin = (req, res, next) => {
   const { email, password } = req.body;
 
   User.findUserByCredentials(email, password)
     .then((user) => {
-      if (!user) {
-        throw new UnauthorizedError('Incorrect email or password');
-      }
       const token = jwt.sign({ _id: user._id }, JWT_SECRET, {
         expiresIn: '7d',
       });
-      res.send({ token });
+      res.send({ data: user.toJSON(), token });
     })
-    .catch(next);
+    .catch(() => {
+      next(new UnauthorizeError('Incorrect email or password'));
+    });
 };
 
 // GET
@@ -105,35 +89,6 @@ const createUser = (req, res, next) => {
       }
     });
 };
-
-// const createUser = (req, res, next) => {
-//   const { name, about, avatar, email, password } = req.body;
-
-//   if (!req.body.password)
-//     throw new BadRequestError('Invalid email or password');
-
-//   bcrypt
-//     .hash(password, 10)
-//     .then((hash) =>
-//       User.create({
-//         name,
-//         about,
-//         avatar,
-//         email,
-//         password: hash,
-//       })
-//     )
-//     .then((user) =>
-//       res.status(201).send({ data: { email: user.email, _id: user._id } })
-//     )
-//     .catch((err) => {
-//       if (err.name === 'ConflictError') {
-//         next(new ConflictError(ERROR_MESSAGE.CONFLICT));
-//       } else {
-//         next(err);
-//       }
-//     });
-// };
 
 // PATCH
 const updateUser = (req, res, next) => {
