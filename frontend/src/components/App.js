@@ -21,7 +21,13 @@ function App() {
 
   const [loggedIn, setLoggedIn] = useState(false);
 
-  const [accountData, setAccountData] = useState({ _id: "", email: "" });
+  const [accountData, setAccountData] = useState({
+    _id: "",
+    email: "",
+    name: "",
+    about: "",
+    avatar: "",
+  });
 
   const [isInfoToolTipOpen, setIsInfoToolTipOpen] = useState(false);
   const [isInfoToolTipAction, setIsInfoToolTipAction] = useState("");
