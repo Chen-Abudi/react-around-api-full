@@ -12,22 +12,6 @@ const BadRequestError = require('../errors/BadRequestError');
 
 const { ERROR_MESSAGE } = require('../utils/constants');
 
-// const userLogin = (req, res, next) => {
-//   const { email, password } = req.body;
-
-//   User.findUserByCredentials(email, password)
-//     .then((user) => {
-//       const token = jwt.sign({ _id: user._id }, JWT_SECRET, {
-//         expiresIn: '7d',
-//       });
-
-//       res.send({ data: user.toJSON(), token });
-//     })
-//     .catch(() => {
-//       next(new UnauthorizeError('Incorrect email or password'));
-//     });
-// };
-
 const userLogin = (req, res, next) => {
   const { email, password } = req.body;
 
@@ -35,7 +19,7 @@ const userLogin = (req, res, next) => {
     .then((data) => {
       const token = jwt.sign(
         { _id: data._id },
-        NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
+        NODE_ENV === 'production' ? JWT_SECRET : 'super-dev-secret',
         {
           expiresIn: '7d',
         }
@@ -99,22 +83,10 @@ const createUser = (req, res, next) => {
         password: hash,
       })
     )
-    .then(
-      (data) => {
-        const { password, ...user } = data._doc;
-        res.status(201).send({ data: user });
-      }
-
-      // res.status(201).send({
-      //   data: {
-      //     email: user.email,
-      //     _id: user._id,
-      //     name: user.name,
-      //     about: user.about,
-      //     avatar: user.avatar,
-      //   },
-      // })
-    )
+    .then((data) => {
+      const { password, ...user } = data._doc;
+      res.status(201).send({ data: user });
+    })
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Invalid email or password'));
