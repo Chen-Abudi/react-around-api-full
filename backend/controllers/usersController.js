@@ -11,16 +11,32 @@ const UnauthorizeError = require('../errors/UnauthorizeError');
 const BadRequestError = require('../errors/BadRequestError');
 
 const { ERROR_MESSAGE } = require('../utils/constants');
-const user = require('../models/user');
+
+// const userLogin = (req, res, next) => {
+//   const { email, password } = req.body;
+
+//   User.findUserByCredentials(email, password)
+//     .then((user) => {
+//       const token = jwt.sign({ _id: user._id }, JWT_SECRET, {
+//         expiresIn: '7d',
+//       });
+
+//       res.send({ data: user.toJSON(), token });
+//     })
+//     .catch(() => {
+//       next(new UnauthorizeError('Incorrect email or password'));
+//     });
+// };
 
 const userLogin = (req, res, next) => {
   const { email, password } = req.body;
 
   User.findUserByCredentials(email, password)
-    .then((user) => {
+    .then((data) => {
       const token = jwt.sign({ _id: user._id }, JWT_SECRET, {
         expiresIn: '7d',
       });
+      const { password, ...user } = data._doc;
       res.send({ data: user.toJSON(), token });
     })
     .catch(() => {
