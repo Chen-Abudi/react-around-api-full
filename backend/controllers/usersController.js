@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const { JWT_SECRET } = process.env;
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 const User = require('../models/user');
 
@@ -17,9 +17,13 @@ const userLogin = (req, res, next) => {
 
   User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, JWT_SECRET, {
-        expiresIn: '7d',
-      });
+      const token = jwt.sign(
+        { _id: user._id },
+        NODE_ENV === 'production' ? JWT_SECRET : 'super-dev-secret',
+        {
+          expiresIn: '7d',
+        }
+      );
       res.send({ data: user.toJSON(), token });
     })
     .catch(() => {
@@ -65,8 +69,9 @@ const createUser = (req, res, next) => {
     .then((user) => {
       if (user) {
         throw new ConflictError(ERROR_MESSAGE.CONFLICT);
+      } else {
+        return bcrypt.hash(password, 10);
       }
-      return bcrypt.hash(password, 10);
     })
     .then((hash) =>
       User.create({
@@ -77,7 +82,15 @@ const createUser = (req, res, next) => {
         password: hash,
       })
     )
-    .then((user) => res.status(201).send({ data: user }))
+    .then((user) =>
+      res.status(201).send({
+        name: user.name,
+        about: user.about,
+        avatar: user.avatar,
+        email: user.email,
+        _id: user._id,
+      })
+    )
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Invalid email or password'));
