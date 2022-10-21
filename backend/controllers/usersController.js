@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const { JWT_SECRET = 'super-dev-secret' } = process.env;
+const { JWT_SECRET } = process.env;
 
 const User = require('../models/user');
 
@@ -91,6 +91,9 @@ const getCurrentUser = (req, res, next) => {
 const createUser = (req, res, next) => {
   const { name, about, avatar, email, password } = req.body;
 
+  if (!req.body.password)
+    throw new BadRequestError('Invalid email or password');
+
   bcrypt
     .hash(password, 10)
     .then((hash) =>
@@ -102,15 +105,16 @@ const createUser = (req, res, next) => {
         password: hash,
       })
     )
-    .then((user) => res.status(201).send({ data: user }))
+    .then((user) =>
+      res.status(201).send({ data: { email: user.email, _id: user._id } })
+    )
     .catch((err) => {
-      if (err.name === 'ValidationError') {
-        next(new BadRequestError('Invalid email or password'));
+      if (err.name === 'ConflictError') {
+        next(new ConflictError(ERROR_MESSAGE.CONFLICT));
       } else {
-        throw new ConflictError(ERROR_MESSAGE.CONFLICT);
+        next(err);
       }
-    })
-    .catch(next);
+    });
 };
 
 // PATCH
