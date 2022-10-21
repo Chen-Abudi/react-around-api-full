@@ -32,12 +32,12 @@ const userLogin = (req, res, next) => {
   const { email, password } = req.body;
 
   User.findUserByCredentials(email, password)
-    .then((data) => {
+    .then((user) => {
       const token = jwt.sign({ _id: user._id }, JWT_SECRET, {
         expiresIn: '7d',
       });
-      const { password, ...user } = data._doc;
-      res.send({ data: user, token });
+
+      res.send({ data: user.toJSON(), token });
     })
     .catch(() => {
       next(new UnauthorizeError('Incorrect email or password'));
