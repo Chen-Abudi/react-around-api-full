@@ -11,6 +11,7 @@ const UnauthorizeError = require('../errors/UnauthorizeError');
 const BadRequestError = require('../errors/BadRequestError');
 
 const { ERROR_MESSAGE } = require('../utils/constants');
+const user = require('../models/user');
 
 const userLogin = (req, res, next) => {
   const { email, password } = req.body;
@@ -78,8 +79,21 @@ const createUser = (req, res, next) => {
         password: hash,
       })
     )
-    .then((user) =>
-      res.status(201).send({ data: { email: user.email, _id: user._id } })
+    .then(
+      (data) => {
+        const { password, ...user } = data._doc;
+        res.status(201).send({ data: user });
+      }
+
+      // res.status(201).send({
+      //   data: {
+      //     email: user.email,
+      //     _id: user._id,
+      //     name: user.name,
+      //     about: user.about,
+      //     avatar: user.avatar,
+      //   },
+      // })
     )
     .catch((err) => {
       if (err.name === 'ValidationError') {
