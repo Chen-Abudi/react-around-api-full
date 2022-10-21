@@ -12,19 +12,35 @@ const BadRequestError = require('../errors/BadRequestError');
 
 const { ERROR_MESSAGE } = require('../utils/constants');
 
+// const userLogin = (req, res, next) => {
+//   const { email, password } = req.body;
+
+//   User.findUserByCredentials(email, password)
+//     .then((user) => {
+//       const token = jwt.sign({ _id: user._id }, JWT_SECRET, {
+//         expiresIn: '7d',
+//       });
+//       res.send({ data: user.toJSON(), token });
+//     })
+//     .catch(() => {
+//       next(new UnauthorizeError('Incorrect email or password'));
+//     });
+// };
+
 const userLogin = (req, res, next) => {
   const { email, password } = req.body;
 
   User.findUserByCredentials(email, password)
     .then((user) => {
+      if (!user) {
+        throw new UnauthorizedError('Incorrect email or password');
+      }
       const token = jwt.sign({ _id: user._id }, JWT_SECRET, {
         expiresIn: '7d',
       });
-      res.send({ data: user.toJSON(), token });
+      res.send({ token });
     })
-    .catch(() => {
-      next(new UnauthorizeError('Incorrect email or password'));
-    });
+    .catch(next);
 };
 
 // GET
