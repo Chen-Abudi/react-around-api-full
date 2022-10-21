@@ -78,7 +78,9 @@ const createUser = (req, res, next) => {
         password: hash,
       })
     )
-    .then((user) => res.status(201).send({ data: user }))
+    .then((user) =>
+      res.status(201).send({ data: { email: user.email, _id: user._id } })
+    )
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Invalid email or password'));
