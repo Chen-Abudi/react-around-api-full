@@ -66,7 +66,7 @@ This is a Full-stack interactive app with responsive design which enables travel
 
 ## Free Images Source
 
-- _For incredible images, Feel Free to_ [&#128073;&#127997; **Click Here !**](https://unsplash.com/)
+- _For incredible images, Feel `Free` to_ [&#128073;&#127997; **Click Here !**](https://unsplash.com/)
 
 ## Possible Improvements
 
@@ -75,7 +75,7 @@ This is a Full-stack interactive app with responsive design which enables travel
 
 # Live Project
 
-- Visit the App [&#128073;&#127997; **HERE !**](https://chen23-around-us.students.nomoredomainssbs.ru/) (Server IP 34.132.57.93)
+- `Visit the App` [&#128073;&#127997; **HERE !**](https://chen23-around-us.students.nomoredomainssbs.ru/)
 
 - [Remote GCP Server API Deployment](https://api.chen23-around-us.students.nomoredomainssbs.ru/)
 
@@ -83,32 +83,32 @@ This is a Full-stack interactive app with responsive design which enables travel
 
 # All Project Features
 
-- In first visitation, the users requires to sign up to create an account.
+- **In first visitation, the users requires to sign up to create an account.**
 
-  - If the users has registered already, they can simply log in.
+  - **_If the users has registered already, they can simply log in._**
     ![](./frontend/src/images/signup.png)
     ![](./frontend/src/images/login.png)
 
-- Once the users logged in, there's no need to log back in again for 7 days at least, as this is the expiration duration of JWT token.
+- **Once the users logged in, there's no need to log back in again for 7 days at least, as this is the expiration duration of JWT token.**
 
-  - They will be navigated to the **Homepage** with several features to use.  
+  - **\*They will be navigated to the **Homepage** with several features to use.\***
     ![](./frontend/src/images/homepage.png)
 
-    - Edit their profile name, about, and their avatar image.
+    - **_Edit their profile name, about, and their avatar image._**
       ![](./frontend/src/images/edit-profile.png)
       ![](./frontend/src/images/update-user-avatar.png)
 
-    - Adding their own cards to the collection.
+    - **_Adding their own cards to the collection._**
       ![](./frontend/src/images/add-card.png)
 
-    - Seeing others cards.
+    - **_Seeing others cards._**
 
-    - Capability to like or dislike own and others cards as well.
+    - **_Capability to like or dislike own and others cards as well._**
 
       ![](./frontend/src/images/like-dislike.jpg)
 
-    - The users can remove only their own cards and not someone elses.
+    - **_The users can remove only their own cards and not someone elses._**
       ![](./frontend/src/images/remove.jpg)
 
-    - Click on card for opening popup with the image in bigger size.
+    - **_Click on the image to view it in its full size._**
       ![](./frontend//src//images/zoom-in.png)
