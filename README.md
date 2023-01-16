@@ -91,7 +91,7 @@ This is a Full-stack interactive app with responsive design which enables travel
 
 - **Once the users logged in, there's no need to log back in again for 7 days at least, as this is the expiration duration of JWT token.**
 
-  - **\*They will be navigated to the **Homepage** with several features to use.\***
+  - **They will be navigated to the **Homepage** with several features to use.**
     ![](./frontend/src/images/homepage.png)
 
     - **_Edit their profile name, about, and their avatar image._**
