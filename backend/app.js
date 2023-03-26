@@ -12,12 +12,9 @@ const errorHandler = require('./middleware/errorHandler');
 const { requestLogger, errorLogger } = require('./middleware/logger');
 
 const { apiLimiter } = require('./utils/rateLimit');
-// const { MONGO_SERVER } = require('./utils/constants');
 
 const app = express();
 const { PORT = 3000 } = process.env;
-
-// mongoose.connect(MONGO_SERVER);
 
 app.use(helmet());
 app.use(apiLimiter);
