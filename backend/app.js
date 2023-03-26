@@ -12,12 +12,12 @@ const errorHandler = require('./middleware/errorHandler');
 const { requestLogger, errorLogger } = require('./middleware/logger');
 
 const { apiLimiter } = require('./utils/rateLimit');
-const { MONGO_SERVER } = require('./utils/constants');
+// const { MONGO_SERVER } = require('./utils/constants');
 
 const app = express();
 const { PORT = 3000 } = process.env;
 
-mongoose.connect(MONGO_SERVER);
+// mongoose.connect(MONGO_SERVER);
 
 app.use(helmet());
 app.use(apiLimiter);
@@ -44,6 +44,18 @@ app.use(errorLogger);
 app.use(errors());
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log(`App listening at port ${PORT}`);
-});
+mongoose
+  .connect(process.env.MONGO_SERVER)
+  .then(() => {
+    console.log('MongoDB cnnected');
+    app.listen(PORT, () => {
+      console.log(`App listening at port ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+// app.listen(PORT, () => {
+//   console.log(`App listening at port ${PORT}`);
+// });

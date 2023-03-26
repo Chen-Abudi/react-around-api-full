@@ -1,5 +1,5 @@
-const MONGO_SERVER =
-  'mongodb+srv://cheezumcali23:UDRv3pEHQ8aV4qKZ@cluster0.w6oa7vv.mongodb.net/?retryWrites=true&w=majority';
+// const MONGO_SERVER =
+//   'mongodb+srv://cheezumcali23:UDRv3pEHQ8aV4qKZ@cluster0.w6oa7vv.mongodb.net/?retryWrites=true&w=majority';
 
 const ERROR_CODE = {
   INCORRECT_DATA: 400,
@@ -25,7 +25,6 @@ const ERROR_MESSAGE = {
 };
 
 module.exports = {
-  MONGO_SERVER,
   ERROR_CODE,
   ERROR_MESSAGE,
 };
