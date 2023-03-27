@@ -65,7 +65,7 @@ class Auth {
 
 const BASE_URL =
   process.env.NODE_ENV === "production"
-    ? "https://react-around-api-full.vercel.app"
+    ? "https://react-around-api-full-five.vercel.app"
     : "http://localhost:3000";
 
 export const auth = new Auth({
