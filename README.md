@@ -24,12 +24,16 @@ This is a Full-stack interactive app with responsive design which enables travel
 - ReactJS
 - Express.js
 - Node.js
-- MongoDB
-- Deploy to _GCP_
+- MongoDB + MongoDB-Atlas
+- **_`Vercel` Deployment_**
+- CI/CD
+- `Vercel Serverless technology`
 - JWT server Auth
 - localStorage
 - CSS3
 - Git/GitHub
+
+---
 
 | NPM Packages (Backend)               |                                                                                                                                                                                                         Aspects of Use |
 | :----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
