@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 const router = require('./routes');
 const errorHandler = require('./middleware/errorHandler');
 
-const { requestLogger, errorLogger } = require('./middleware/logger');
+// const { requestLogger, errorLogger } = require('./middleware/logger');
 
 const { apiLimiter } = require('./utils/rateLimit');
 
@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.options('*', cors());
 
-app.use(requestLogger);
+// app.use(requestLogger);
 
 // app.get('/crash-test', () => {
 //   setTimeout(() => {
@@ -36,7 +36,7 @@ app.use(requestLogger);
 
 app.use(router);
 
-app.use(errorLogger);
+// app.use(errorLogger);
 app.use(errors());
 app.use(errorHandler);
 
