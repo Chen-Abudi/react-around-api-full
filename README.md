@@ -52,7 +52,7 @@ This is a Full-stack interactive app with responsive design which enables travel
 
 <!-- - NGINX - An open source software for web serving, reverse proxying, caching, load balancing, media streaming, and more. -->
 
-## API Endpoints :
+## 📍 API Endpoints :
 
 | RESTful API Enpoints | HTTP Methods |          Usage Purpose           |
 | :------------------- | -----------: | :------------------------------: |
