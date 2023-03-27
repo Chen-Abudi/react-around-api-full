@@ -50,7 +50,7 @@ This is a Full-stack interactive app with responsive design which enables travel
 | express-rate-limit                   |                                                                                                                                Use to limit repeated requests to public APIs and/or endpoints such as password reset . |
 | helmet                               |                                                                                                                                                   Helps you secure your Express apps by setting various HTTP headers . |
 
-- NGINX - An open source software for web serving, reverse proxying, caching, load balancing, media streaming, and more.
+<!-- - NGINX - An open source software for web serving, reverse proxying, caching, load balancing, media streaming, and more. -->
 
 ## API Endpoints :
 
@@ -80,13 +80,9 @@ This is a Full-stack interactive app with responsive design which enables travel
 
 # ✨ Live Project
 
-<!-- - `Visit the App` [&#128073;&#127997; **HERE !**](https://chen23-around-us.students.nomoredomainssbs.ru/) -->
-
 - `Visit the App` [&#128073;&#127997; **HERE !**](https://react-around-api-full-client.vercel.app/)
 
 - [Remote Server API Deployment](https://react-around-api-full-five.vercel.app)
-
-<!-- - [Remote GCP Server API Deployment](https://api.chen23-around-us.students.nomoredomainssbs.ru/) -->
 
 **Enjoy ! 🌺**
 
