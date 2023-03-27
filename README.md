@@ -4,9 +4,9 @@
 
 This repository contains the full API of "Around the U.S." project that features user authorization and user registration and handles cards and users.
 
-This app was integrated between Backend & Frontend repositories, then deployed to _GCP_ (Google Cloud Platform) instance.
+This app was integrated between Backend & Frontend repositories, then deployed to _Vercel_.
 
-# Overview
+# 📢 Overview
 
 - Intro
 - Languages & Techniques
@@ -15,11 +15,11 @@ This app was integrated between Backend & Frontend repositories, then deployed t
 - Live Project
 - All Project Features
 
-## Intro
+## 🔎 Intro
 
 This is a Full-stack interactive app with responsive design which enables travelers to share their travel photos by creating account.
 
-## Languages & Techniques
+## 🛠️ Languages & Techniques
 
 - ReactJS
 - Express.js
@@ -30,6 +30,7 @@ This is a Full-stack interactive app with responsive design which enables travel
 - `Vercel Serverless technology`
 - JWT server Auth
 - localStorage
+- REST API with CRUD Implementation
 - CSS3
 - Git/GitHub
 
@@ -68,16 +69,16 @@ This is a Full-stack interactive app with responsive design which enables travel
 | /cards/:\_id/likes   |          PUT |          Liking a card           |
 | /cards/:\_id/likes   |       DELETE |         Disliking a card         |
 
-## Free Images Source
+## 📷 Free Images Source
 
 - _For incredible images, Feel `Free` to_ [&#128073;&#127997; **Click Here !**](https://unsplash.com/)
 
-## Possible Improvements
+## 🔧 Possible Improvements
 
 - [ ] Create a Forgot Password option in case the users forget theirs.
 - [ ] Resets Password
 
-# Live Project
+# ✨ Live Project
 
 <!-- - `Visit the App` [&#128073;&#127997; **HERE !**](https://chen23-around-us.students.nomoredomainssbs.ru/) -->
 
@@ -89,7 +90,9 @@ This is a Full-stack interactive app with responsive design which enables travel
 
 **Enjoy ! 🌺**
 
-# All Project Features
+---
+
+# 📸 All Project Features
 
 - **In first visitation, the users requires to sign up to create an account.**
 
