@@ -9,7 +9,7 @@ This app was integrated between Backend & Frontend repositories, then deployed t
 # 📣 Overview:
 
 - Intro
-- Languages & Techniques
+- Tech Stack & Techniques
 - Free Images Source
 - Possible Improvements
 - Live Project
