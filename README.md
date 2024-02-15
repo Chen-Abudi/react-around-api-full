@@ -1,6 +1,6 @@
 # Project 15: Around U.S Full-Stack Social Travel App 🌎
 
-## **Developed By Chen Abudi** 👩🏽‍💻
+## **Developed By Grace Chen Abudi** 👩🏽‍💻
 
 This repository contains the full API of "Around the U.S." project that features user authorization and user registration and handles cards and users.
 
