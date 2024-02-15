@@ -6,7 +6,7 @@ This repository contains the full API of "Around the U.S." project that features
 
 This app was integrated between Backend & Frontend repositories, then deployed to _Vercel_.
 
-# 📣 Overview
+# 📣 Overview:
 
 - Intro
 - Languages & Techniques
@@ -19,7 +19,7 @@ This app was integrated between Backend & Frontend repositories, then deployed t
 
 This is a Full-stack interactive app with responsive design which enables travelers to share their travel photos by creating account.
 
-## 🧰🛠️ Tech Stack & Techniques
+## 🧰 🛠️ Tech Stack & Techniques:
 
 - ReactJS
 - Express.js
