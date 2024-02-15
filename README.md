@@ -1,12 +1,12 @@
 # Project 15: Around U.S Full-Stack Social Travel App 🌎
 
-## **Developed By Chen Abudi** 👩‍💻
+## **Developed By Chen Abudi** 👩🏽‍💻
 
 This repository contains the full API of "Around the U.S." project that features user authorization and user registration and handles cards and users.
 
 This app was integrated between Backend & Frontend repositories, then deployed to _Vercel_.
 
-# 📢 Overview
+# 📣 Overview
 
 - Intro
 - Languages & Techniques
@@ -19,7 +19,7 @@ This app was integrated between Backend & Frontend repositories, then deployed t
 
 This is a Full-stack interactive app with responsive design which enables travelers to share their travel photos by creating account.
 
-## 🛠️ Languages & Techniques
+## 🧰🛠️ Tech Stack & Techniques
 
 - ReactJS
 - Express.js
