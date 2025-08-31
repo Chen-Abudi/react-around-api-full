@@ -135,6 +135,41 @@ function App() {
         />
 
         <Routes>
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <AroundUS />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/signin"
+            element={
+              <Login
+                handleLogin={handleLogin}
+                showTooltip={handleShowTooltip}
+                isLoading={isLoading}
+              />
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <Register
+                handleRegister={handleRegister}
+                showTooltip={handleShowTooltip}
+                isLoading={isLoading}
+              />
+            }
+          />
+          <Route
+            path="*"
+            element={<Navigate to={loggedIn ? "/" : "/signin"} replace />}
+          />
+        </Routes>
+
+        {/* <Routes>
           <ProtectedRoute
             exact
             path="/"
@@ -161,7 +196,7 @@ function App() {
           <Route>
             {loggedIn ? <Navigate to="/" /> : <Navigate to="/signin" />}
           </Route>
-        </Routes>
+        </Routes> */}
 
         <InfoToolTip
           isOpen={isInfoToolTipOpen}
