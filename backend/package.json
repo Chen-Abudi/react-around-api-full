@@ -1,6 +1,9 @@
 {
   "name": "around-express",
   "version": "1.0.0",
+  "engines": {
+    "node": "22.x"
+  },
   "description": "Project 12th in Back End working with server: working with databases, setting up testing and security and deploying it on a remote machine. Main goal is to create a server with full API and authorization.",
   "main": "app.js",
   "scripts": {
@@ -36,7 +39,6 @@
     "express-rate-limit": "^6.6.0",
     "express-winston": "^4.2.0",
     "helmet": "^5.1.1",
-    "ip": "~> 1.1.9",
     "joi": "^17.6.2",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.13.6",
@@ -47,6 +49,6 @@
     "eslint": "^8.22.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
-    "nodemon": "^2.0.19"
+    "nodemon": "^3.1.10"
   }
 }

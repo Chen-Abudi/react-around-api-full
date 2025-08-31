@@ -54,20 +54,20 @@ This is a Full-stack interactive app with responsive design which enables travel
 
 ## 📍 API Endpoints :
 
-| RESTful API Enpoints | HTTP Methods |          Usage Purpose           |
-| :------------------- | -----------: | :------------------------------: |
-| /signup              |         POST |        User Registration         |
-| /signin              |         POST |            User Login            |
-| /users               |          GET |   GETting data from all users    |
-| /users/:\_id         |          GET |    GETting user by their id.     |
-| /users               |         POST | Creating a specific user profile |
-| /users/me            |        PATCH |        Updating user data        |
-| /users/me/avatar     |        PATCH |    Updating user avatar data     |
-| /cards               |          GET |   GETting data from all cards    |
-| /cards               |         POST |       Creating a new card        |
-| /cards/:\_id         |       DELETE |      DELETE card by its id       |
-| /cards/:\_id/likes   |          PUT |          Liking a card           |
-| /cards/:\_id/likes   |       DELETE |         Disliking a card         |
+| RESTful API Endpoints | HTTP Methods |          Usage Purpose           |
+| :-------------------- | -----------: | :------------------------------: |
+| /signup               |         POST |        User Registration         |
+| /signin               |         POST |            User Login            |
+| /users                |          GET |   GETting data from all users    |
+| /users/:\_id          |          GET |    GETting user by their id.     |
+| /users                |         POST | Creating a specific user profile |
+| /users/me             |        PATCH |        Updating user data        |
+| /users/me/avatar      |        PATCH |    Updating user avatar data     |
+| /cards                |          GET |   GETting data from all cards    |
+| /cards                |         POST |       Creating a new card        |
+| /cards/:\_id          |       DELETE |      DELETE card by its id       |
+| /cards/:\_id/likes    |          PUT |          Liking a card           |
+| /cards/:\_id/likes    |       DELETE |         Disliking a card         |
 
 ## 📷 Free Images Source
 
