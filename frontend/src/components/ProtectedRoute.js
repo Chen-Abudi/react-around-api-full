@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route, Navigate } from "react-router-dom";
 import { AccountContext } from "../contexts/AccountContext";
 
 const ProtectedRoute = ({ component: Component, ...props }) => {
@@ -11,7 +11,7 @@ const ProtectedRoute = ({ component: Component, ...props }) => {
         user.loggedIn === true ? (
           <Component {...props} />
         ) : (
-          <Redirect to="/signin" />
+          <Navigate to="/signin" />
         )
       }
     </Route>

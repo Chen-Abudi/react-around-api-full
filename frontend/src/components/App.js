@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch, Redirect, useHistory } from "react-router-dom";
+import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 
 import { auth } from "../utils/auth";
 
@@ -17,7 +17,7 @@ import InfoToolTip from "./InfoToolTip";
 import api from "../utils/api";
 
 function App() {
-  const history = useHistory();
+  const history = useNavigate();
 
   const [loggedIn, setLoggedIn] = useState(false);
 
@@ -134,7 +134,7 @@ function App() {
           handleLogout={handleLogout}
         />
 
-        <Switch>
+        <Routes>
           <ProtectedRoute
             exact
             path="/"
@@ -159,9 +159,9 @@ function App() {
           </Route>
 
           <Route>
-            {loggedIn ? <Redirect to="/" /> : <Redirect to="/signin" />}
+            {loggedIn ? <Navigate to="/" /> : <Navigate to="/signin" />}
           </Route>
-        </Switch>
+        </Routes>
 
         <InfoToolTip
           isOpen={isInfoToolTipOpen}
